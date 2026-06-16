@@ -3,7 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import BlurText from "./BlurText";
 
 export default function Hero() {
   const stats = [
@@ -41,17 +42,40 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-serif text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-navy leading-[1.1] tracking-tight"
-            >
-              Markaları <br />
-              <span className="font-serif italic text-brand-gold font-normal">Ekranı Durduran</span> <br />
-              Başarı Hikayelerine <br />
-              Dönüştürüyorum.
-            </motion.h1>
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-extrabold text-brand-navy leading-[1.15] tracking-tight flex flex-col gap-2">
+              <BlurText
+                text="Markaları"
+                delay={30}
+                startDelay={100}
+                animateBy="letters"
+                direction="bottom"
+                className="font-serif text-brand-navy"
+              />
+              <BlurText
+                text="Ekranı Durduran"
+                delay={30}
+                startDelay={350}
+                animateBy="letters"
+                direction="bottom"
+                className="font-serif italic text-brand-gold font-normal"
+              />
+              <BlurText
+                text="Başarı Hikayelerine"
+                delay={25}
+                startDelay={750}
+                animateBy="letters"
+                direction="bottom"
+                className="font-serif text-brand-navy"
+              />
+              <BlurText
+                text="Dönüştürüyorum."
+                delay={25}
+                startDelay={1150}
+                animateBy="letters"
+                direction="bottom"
+                className="font-serif text-brand-navy"
+              />
+            </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
