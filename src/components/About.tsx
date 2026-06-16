@@ -53,10 +53,6 @@ export default function About() {
               />
             </motion.div>
 
-            {/* Golden Decorative Signature Box */}
-            <div className="absolute -top-6 -left-4 p-4 glass-panel border border-brand-gold/30 hidden md:block">
-              <span className="font-serif italic text-sm text-brand-gold">elif yilmaz studio.</span>
-            </div>
           </div>
 
           {/* Text/Content Spread */}
