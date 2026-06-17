@@ -81,7 +81,7 @@ export default function SkillsTools() {
   };
 
   return (
-    <section className="py-24 bg-brand-cream relative overflow-hidden">
+    <section id="yetenekler" className="py-24 bg-transparent relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#C5A572_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
 

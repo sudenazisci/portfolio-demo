@@ -31,34 +31,34 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed z-50 left-0 right-0 mx-auto transition-all duration-500 ease-in-out border border-[#0E1629]/5
+      className={`fixed z-50 left-0 right-0 mx-auto transition-all duration-500 ease-in-out border
         ${isOpen 
-          ? "top-4 w-[90%] rounded-2xl py-4 px-6 bg-[#FCFAF7] shadow-xl" 
+          ? "top-3 w-[90%] rounded-2xl py-3 px-5 bg-[#FCFAF7] border-[#0E1629]/10 shadow-xl" 
           : scrolled
-            ? "top-4 w-[90%] lg:w-[85%] max-w-5xl px-6 py-2.5 rounded-full bg-[#FCFAF7]/90 backdrop-blur-md shadow-[0_8px_30px_rgba(14,22,41,0.06)]"
-            : "top-6 w-[95%] lg:w-[92%] max-w-7xl px-8 py-4 rounded-full bg-[#FCFAF7]/45 backdrop-blur-md shadow-[0_4px_24px_rgba(14,22,41,0.02)]"
+            ? "top-3 w-[90%] lg:w-[85%] max-w-5xl px-5 py-1.5 rounded-full bg-[#FCFAF7]/95 border-brand-gold/20 backdrop-blur-md shadow-[0_8px_32px_rgba(14,22,41,0.08)]"
+            : "top-4 w-[95%] lg:w-[92%] max-w-7xl px-6 py-2.5 rounded-full bg-[#FCFAF7]/80 border-brand-gold/15 backdrop-blur-md shadow-[0_4px_30px_rgba(14,22,41,0.05)]"
         }
       `}
     >
       <div className="w-full max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex flex-col group py-1">
-          <span className="font-serif text-xl md:text-2xl font-light tracking-[0.15em] text-brand-navy group-hover:text-brand-gold transition-colors duration-500 select-none flex items-center gap-1">
-            ELİF YILMAZ <span className="text-[10px] text-brand-gold group-hover:rotate-45 transition-transform duration-500">✦</span>
+        <a href="#" className="flex flex-col group py-0.5">
+          <span className="font-serif text-lg md:text-xl font-light tracking-[0.15em] text-brand-navy group-hover:text-brand-gold transition-colors duration-500 select-none flex items-center gap-1">
+            ELİF YILMAZ <span className="text-[9px] text-brand-gold group-hover:rotate-45 transition-transform duration-500">✦</span>
           </span>
-          <span className="text-[8px] tracking-[0.35em] font-sans font-extrabold text-[#C5A572] uppercase mt-0.5 group-hover:translate-x-1 transition-transform duration-500 ease-out select-none">
+          <span className="text-[7px] tracking-[0.35em] font-sans font-extrabold text-[#C5A572] uppercase mt-0.5 group-hover:translate-x-1 transition-transform duration-500 ease-out select-none">
             Content & Growth
           </span>
         </a>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center">
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-0.5">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[11px] uppercase tracking-[0.2em] font-bold text-brand-navy/70 hover:text-brand-navy transition-all duration-500 relative py-2 px-4 rounded-full hover:bg-brand-gold/8 group"
+                className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-navy/85 hover:text-brand-navy transition-all duration-500 relative py-1.5 px-3.5 rounded-full hover:bg-brand-gold/8 group"
               >
                 {link.name}
                 {/* Hover Dot */}

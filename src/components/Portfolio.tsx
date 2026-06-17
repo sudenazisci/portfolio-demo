@@ -50,25 +50,52 @@ export default function Portfolio() {
   ];
 
   return (
-    <section id="portfoy" className="py-24 bg-brand-cream relative overflow-hidden">
+    <section id="portfoy" className="py-24 bg-transparent relative overflow-hidden">
       {/* Background visual detail */}
       <div className="absolute top-0 right-0 w-[40vw] h-[40vw] rounded-full bg-brand-rose/10 blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-          <div className="max-w-xl">
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-20 gap-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-xl"
+          >
             <span className="text-xs uppercase font-sans tracking-[0.2em] text-brand-gold font-extrabold mb-4 block">
               Vaka Çalışmaları (Case Studies)
             </span>
             <h2 className="font-serif text-4xl md:text-5xl font-extrabold text-brand-navy leading-tight">
               Gerçek Sonuçlar, <span className="font-serif italic text-brand-gold font-normal">Büyüyen</span> Markalar
             </h2>
-          </div>
-          <p className="text-sm md:text-base text-brand-navy/80 font-medium max-w-sm font-sans leading-relaxed">
-            Sadece estetik paylaşımlar değil; işletmelerin cirosunu, erişimini ve sadık kitle sayısını doğrudan artıran dönüşümler.
-          </p>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+            className="max-w-md w-full"
+          >
+            {/* Elegant Minimal Editorial Quote Block */}
+            <div className="relative py-2 pl-6 border-l border-brand-gold/30 flex flex-col justify-center min-h-[80px]">
+              {/* Little gold diamond bullet in the middle of the vertical border */}
+              <div className="absolute -left-[4.5px] top-1/2 -translate-y-1/2 w-2 h-2 rotate-45 bg-[#F7EAEB] border border-brand-gold" />
+              
+              <p className="text-sm md:text-[15px] text-brand-navy/80 font-sans font-light leading-relaxed tracking-wide">
+                Sadece estetik paylaşımlar değil; işletmelerin{" "}
+                <span className="font-serif italic text-brand-navy font-bold text-base">cirosunu</span>
+                , erişimini ve sadık kitle sayısını doğrudan artıran{" "}
+                <span className="relative inline-block font-serif italic text-brand-gold font-bold text-base after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1px] after:bg-brand-gold/45">
+                  dönüşümler
+                </span>
+                .
+              </p>
+            </div>
+          </motion.div>
         </div>
 
         {/* Projects List */}
@@ -134,10 +161,6 @@ export default function Portfolio() {
                       </div>
                       <span className="font-serif text-lg font-black text-brand-navy">
                         {stat.value}
-                      </span>
-                      {/* Mini growth indicator badge */}
-                      <span className="text-[9px] text-emerald-600 font-extrabold flex items-center gap-0.5 mt-1 font-sans">
-                        ▲ %100 Doğrulanmış
                       </span>
                     </div>
                   ))}

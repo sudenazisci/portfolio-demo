@@ -8,7 +8,7 @@ import TextType from "./TextType";
 
 export default function About() {
   return (
-    <section id="hakkimda" className="py-24 bg-brand-cream relative overflow-hidden">
+    <section id="hakkimda" className="py-24 bg-transparent relative overflow-hidden">
       {/* Decorative grids */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#C5A572_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none" />
       
@@ -145,7 +145,7 @@ export default function About() {
               <TextType
                 text="Merhaba, ben Elif Yılmaz. İstanbul merkezli çalışan bir Sosyal Medya Yöneticisi, İçerik Stratejisti ve Marka Büyüme Uzmanıyım. Markaların dijital ekosistemde sadece var olmalarını değil, hedef kitleleriyle gerçek bağlar kurarak büyümelerini sağlıyorum."
                 typingSpeed={30}
-                loop={false}
+                loop={true}
                 showCursor={true}
                 cursorCharacter="|"
                 startOnVisible={true}

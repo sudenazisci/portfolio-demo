@@ -67,7 +67,7 @@ export default function Services() {
   };
 
   return (
-    <section id="hizmetler" className="py-24 bg-[#FCFAF7] relative overflow-hidden">
+    <section id="hizmetler" className="py-24 bg-transparent relative overflow-hidden">
       
       {/* Hareketli Arka Plan Işık Küreleri (Floating Glowing Spheres in Background) */}
       <div className="absolute top-[10%] left-[-5%] w-[350px] h-[350px] rounded-full bg-brand-gold/10 blur-[100px] animate-float-slow pointer-events-none z-0" />

@@ -32,7 +32,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="iletisim" className="py-24 bg-brand-cream relative overflow-hidden">
+    <section id="iletisim" className="py-24 bg-transparent relative overflow-hidden">
       {/* Decorative radial gradients */}
       <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-brand-rose/25 blur-[120px] pointer-events-none" />
       <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-brand-gold/10 blur-[100px] pointer-events-none" />

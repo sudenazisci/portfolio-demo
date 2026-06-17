@@ -43,7 +43,7 @@ export default function InstagramShowcase() {
   ];
 
   return (
-    <section className="py-24 bg-brand-cream relative overflow-hidden flex items-center">
+    <section id="instagram-showcase" className="py-24 bg-transparent relative overflow-hidden flex items-center">
       {/* Decorative gradient blurs */}
       <div className="absolute top-0 right-0 w-[45vw] h-[45vw] rounded-full bg-brand-lavender/20 blur-[130px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] rounded-full bg-brand-rose/15 blur-[120px] pointer-events-none" />

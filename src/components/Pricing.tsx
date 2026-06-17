@@ -53,7 +53,7 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="fiyatlandirma" className="py-24 bg-[#FCFAF7] relative overflow-hidden">
+    <section id="fiyatlandirma" className="py-24 bg-transparent relative overflow-hidden">
       {/* Decorative gradient blurs */}
       <div className="absolute top-0 right-0 w-[40vw] h-[40vw] rounded-full bg-brand-lavender/25 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[35vw] h-[35vw] rounded-full bg-brand-rose/20 blur-[100px] pointer-events-none" />

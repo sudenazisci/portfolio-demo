@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -42,6 +42,16 @@ export default function Testimonials() {
     setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  // Autoplay every 5 seconds, resetting the timer when activeIndex changes (manual navigation)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [activeIndex, testimonials.length]);
+
   const slideVariants = {
     enter: (dir: number) => ({
       x: dir > 0 ? 80 : -80,
@@ -58,7 +68,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-24 bg-brand-cream relative overflow-hidden">
+    <section id="yorumlar" className="py-24 bg-transparent relative overflow-hidden">
       {/* Subtle decorative glowing backdrops */}
       <div className="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-brand-gold/5 blur-[80px] pointer-events-none animate-pulse-slow" />
       <div className="absolute bottom-1/4 -left-20 w-80 h-80 rounded-full bg-brand-rose/5 blur-[80px] pointer-events-none animate-float-slow" />
@@ -68,37 +78,37 @@ export default function Testimonials() {
         <span className="text-3xl font-light">✦</span>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
+      <div className="max-w-3xl mx-auto px-6 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-20 relative">
-          <span className="text-[11px] uppercase font-sans tracking-[0.25em] text-brand-gold font-bold mb-4 block">
+        <div className="text-center mb-12 relative">
+          <span className="text-[11px] uppercase font-sans tracking-[0.25em] text-brand-gold font-bold mb-3 block">
             Müşteri Yorumları
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl font-light text-brand-navy tracking-wide">
+          <h2 className="font-serif text-3xl md:text-4xl font-light text-brand-navy tracking-wide">
             Markaların <span className="font-serif italic text-brand-gold font-normal relative">
               Gözünden
               <span className="absolute left-0 right-0 bottom-1 h-[1px] bg-brand-gold/30" />
             </span> Elif Yılmaz
           </h2>
-          <div className="w-12 h-[1px] bg-brand-gold/30 mx-auto mt-6" />
+          <div className="w-12 h-[1px] bg-brand-gold/30 mx-auto mt-4" />
         </div>
 
         {/* Card Component */}
-        <div className="relative group min-h-[380px] md:min-h-[340px] flex flex-col justify-between">
+        <div className="relative group min-h-[300px] md:min-h-[250px] flex flex-col justify-between">
           
           {/* Offset background decorative frame */}
-          <div className="absolute inset-0 border border-brand-gold/15 translate-x-3 translate-y-3 rounded-2xl pointer-events-none transition-transform duration-500 group-hover:translate-x-1.5 group-hover:translate-y-1.5" />
+          <div className="absolute inset-0 border border-brand-gold/15 translate-x-2 translate-y-2 rounded-2xl pointer-events-none transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1" />
           
           {/* Foreground luxury card */}
-          <div className="relative overflow-hidden w-full h-full bg-[#FCFAF7]/60 backdrop-blur-md border border-white/80 p-8 md:p-14 rounded-2xl shadow-[0_20px_50px_rgba(212,175,55,0.04)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)] transition-all duration-500 flex flex-col justify-between">
+          <div className="relative overflow-hidden w-full h-full bg-[#FCFAF7]/60 backdrop-blur-md border border-white/80 p-6 md:p-10 rounded-2xl shadow-[0_20px_50px_rgba(212,175,55,0.04)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)] transition-all duration-500 flex flex-col justify-between">
             
             {/* Large Serif Decorative Quotation Mark */}
-            <span className="font-serif text-[120px] leading-none text-brand-gold/15 absolute -top-4 -left-2 font-normal select-none pointer-events-none">
+            <span className="font-serif text-[80px] leading-none text-brand-gold/15 absolute -top-2 -left-1 font-normal select-none pointer-events-none">
               “
             </span>
 
-            <div className="relative overflow-hidden flex-grow flex items-center min-h-[160px] z-10">
+            <div className="relative overflow-hidden flex-grow flex items-center min-h-[120px] z-10">
               <AnimatePresence mode="wait" initial={false} custom={direction}>
                 <motion.div
                   key={activeIndex}
@@ -114,31 +124,31 @@ export default function Testimonials() {
                   className="w-full"
                 >
                   {/* Rating Stars with stagger style */}
-                  <div className="flex gap-1 mb-6">
+                  <div className="flex gap-1 mb-4">
                     {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-brand-gold text-brand-gold" />
+                      <Star key={i} className="w-3.5 h-3.5 fill-brand-gold text-brand-gold" />
                     ))}
                   </div>
 
                   {/* Quote Text */}
-                  <p className="font-serif text-lg md:text-xl italic text-brand-navy leading-relaxed mb-8 relative z-10">
+                  <p className="font-serif text-base md:text-lg italic text-brand-navy leading-relaxed mb-6 relative z-10">
                     "{testimonials[activeIndex].quote}"
                   </p>
 
                   {/* Client Info */}
                   <div className="flex items-center gap-4">
                     {/* Monogram Seal */}
-                    <div className="relative w-12 h-12 rounded-full border border-brand-gold/30 flex items-center justify-center bg-brand-cream/80 shadow-[0_4px_12px_rgba(212,175,55,0.06)] shrink-0 overflow-hidden group/seal">
+                    <div className="relative w-11 h-11 rounded-full border border-brand-gold/30 flex items-center justify-center bg-brand-cream/80 shadow-[0_4px_12px_rgba(212,175,55,0.06)] shrink-0 overflow-hidden group/seal">
                       <div className="absolute inset-0.5 rounded-full border border-dashed border-brand-gold/20" />
                       <span className="font-serif text-xs font-bold text-brand-gold-muted tracking-wider relative z-10 transition-transform duration-300 group-hover/seal:scale-110 select-none">
                         {testimonials[activeIndex].initials}
                       </span>
                     </div>
                     <div>
-                      <h4 className="font-serif text-base font-semibold text-brand-navy tracking-wide">
+                      <h4 className="font-serif text-sm md:text-base font-semibold text-brand-navy tracking-wide">
                         {testimonials[activeIndex].author}
                       </h4>
-                      <p className="text-[10px] text-brand-navy/60 font-semibold font-sans tracking-[0.08em] uppercase mt-0.5">
+                      <p className="text-[9px] text-brand-navy/60 font-semibold font-sans tracking-[0.08em] uppercase mt-0.5">
                         {testimonials[activeIndex].role}
                       </p>
                     </div>
@@ -148,7 +158,7 @@ export default function Testimonials() {
             </div>
 
             {/* Navigation controls line */}
-            <div className="flex justify-between items-center mt-10 pt-8 border-t border-brand-navy/5 relative z-20">
+            <div className="flex justify-between items-center mt-6 pt-5 border-t border-brand-navy/5 relative z-20">
               
               {/* Pagination Indicators */}
               <div className="flex gap-2">
@@ -164,28 +174,28 @@ export default function Testimonials() {
                   >
                     <span className={`block h-1.5 rounded-full transition-all duration-500 ease-out ${
                       idx === activeIndex 
-                        ? "bg-brand-gold w-8 shadow-[0_0_8px_rgba(212,175,55,0.4)]" 
-                        : "bg-brand-gold/20 w-3 group-hover:bg-brand-gold/45"
+                        ? "bg-brand-gold w-6 shadow-[0_0_8px_rgba(212,175,55,0.4)]" 
+                        : "bg-brand-gold/20 w-2.5 group-hover:bg-brand-gold/45"
                     }`} />
                   </button>
                 ))}
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-3">
+              <div className="flex gap-2.5">
                 <button
                   onClick={handlePrev}
-                  className="w-10 h-10 rounded-full border border-brand-navy/10 hover:border-brand-gold/45 text-brand-navy hover:text-brand-gold bg-[#FCFAF7]/40 hover:bg-[#FCFAF7] backdrop-blur-sm shadow-[0_2px_8px_rgba(14,22,41,0.02)] hover:shadow-[0_4px_12px_rgba(212,175,55,0.08)] transition-all duration-300 flex items-center justify-center cursor-pointer group active:scale-95"
+                  className="w-9 h-9 rounded-full border border-brand-navy/10 hover:border-brand-gold/45 text-brand-navy hover:text-brand-gold bg-[#FCFAF7]/40 hover:bg-[#FCFAF7] backdrop-blur-sm shadow-[0_2px_8px_rgba(14,22,41,0.02)] hover:shadow-[0_4px_12px_rgba(212,175,55,0.08)] transition-all duration-300 flex items-center justify-center cursor-pointer group active:scale-95"
                   aria-label="Önceki"
                 >
-                  <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform duration-300" />
+                  <ChevronLeft className="w-4.5 h-4.5 group-hover:-translate-x-0.5 transition-transform duration-300" />
                 </button>
                 <button
                   onClick={handleNext}
-                  className="w-10 h-10 rounded-full border border-brand-navy/10 hover:border-brand-gold/45 text-brand-navy hover:text-brand-gold bg-[#FCFAF7]/40 hover:bg-[#FCFAF7] backdrop-blur-sm shadow-[0_2px_8px_rgba(14,22,41,0.02)] hover:shadow-[0_4px_12px_rgba(212,175,55,0.08)] transition-all duration-300 flex items-center justify-center cursor-pointer group active:scale-95"
+                  className="w-9 h-9 rounded-full border border-brand-navy/10 hover:border-brand-gold/45 text-brand-navy hover:text-brand-gold bg-[#FCFAF7]/40 hover:bg-[#FCFAF7] backdrop-blur-sm shadow-[0_2px_8px_rgba(14,22,41,0.02)] hover:shadow-[0_4px_12px_rgba(212,175,55,0.08)] transition-all duration-300 flex items-center justify-center cursor-pointer group active:scale-95"
                   aria-label="Sonraki"
                 >
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform duration-300" />
+                  <ChevronRight className="w-4.5 h-4.5 group-hover:translate-x-0.5 transition-transform duration-300" />
                 </button>
               </div>
 

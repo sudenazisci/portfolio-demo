@@ -36,7 +36,7 @@ export default function RootLayout({
       lang="tr"
       className={`${cormorantGaramond.variable} ${plusJakartaSans.variable} ${caveat.variable} scroll-smooth h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#FCFAF7] text-[#0E1629] font-sans">
+      <body className="min-h-full flex flex-col text-[#0E1629] font-sans">
         {children}
       </body>
     </html>

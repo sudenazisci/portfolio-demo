@@ -16,7 +16,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden bg-[#FCFAF7]">
+    <section id="hero" className="relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden bg-transparent">
       {/* Decorative luxury shapes */}
       <div className="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-brand-lavender/40 blur-[120px] animate-float-slow pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-brand-rose/30 blur-[100px] animate-float-reverse pointer-events-none" />
@@ -95,52 +95,75 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3 }}
             className="mt-10 flex flex-wrap gap-4"
             >
-              {/* Button 1: Portföyü İncele (Sliding background from left) */}
+              {/* Button 1: Portföyü İncele (Gold Hover + Shimmer Sweep) */}
               <motion.a
                 href="#portfoy"
-                className="relative px-9 py-4 text-xs font-bold uppercase tracking-widest text-[#FCFAF7] border border-brand-navy hover:border-brand-gold overflow-hidden group flex items-center gap-2 select-none rounded-full cursor-pointer shadow-[0_4px_14px_rgba(14,22,41,0.08)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.18)] transition-all duration-500"
+                className="relative px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#FCFAF7] border border-brand-navy overflow-hidden group flex items-center gap-2 select-none rounded-full cursor-pointer shadow-[0_4px_12px_rgba(14,22,41,0.06)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.2)]"
                 whileHover="hover"
                 whileTap={{ scale: 0.98 }}
               >
-                {/* Base color */}
+                {/* Base color background */}
                 <span className="absolute inset-0 bg-brand-navy" />
-                {/* Gold sliding hover background */}
+                {/* Gold hover background */}
                 <motion.span
                   className="absolute inset-0 bg-brand-gold"
-                  initial={{ x: "-100%" }}
+                  initial={{ opacity: 0 }}
                   variants={{
-                    hover: { x: 0 }
+                    hover: { opacity: 1 }
                   }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.35 }}
                 />
-                <span className="relative z-10 flex items-center gap-2">
+                {/* Diagonal Gloss Shimmer Sweep */}
+                <motion.span
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FCFAF7]/30 to-transparent pointer-events-none"
+                  style={{ skewX: -20, left: "-100%", width: "40%" }}
+                  variants={{
+                    hover: { left: "150%" }
+                  }}
+                  transition={{ duration: 0.65, ease: "easeInOut" }}
+                />
+                <motion.span
+                  className="relative z-10 flex items-center gap-1.5 transition-colors duration-300"
+                  variants={{
+                    hover: { color: "#0E1629" }
+                  }}
+                >
                   Portföyü İncele
                   <motion.span
                     variants={{
-                      hover: { x: 5 }
+                      hover: { x: 4 }
                     }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                   >
-                    <ArrowRight className="w-4.5 h-4.5 stroke-[2.5]" />
+                    <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                   </motion.span>
-                </span>
+                </motion.span>
               </motion.a>
 
-              {/* Button 2: Ücretsiz Görüşme Planla (Sliding background from bottom) */}
+              {/* Button 2: Ücretsiz Görüşme Planla (Navy Hover + Shimmer Sweep) */}
               <motion.a
                 href="#iletisim"
-                className="relative px-9 py-4 text-xs font-bold uppercase tracking-widest text-brand-navy border border-brand-navy/35 hover:border-brand-navy overflow-hidden group flex items-center justify-center select-none rounded-full cursor-pointer hover:shadow-[0_4px_14px_rgba(14,22,41,0.04)] transition-all duration-500"
+                className="relative px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-navy border border-brand-navy/35 hover:border-brand-navy overflow-hidden group flex items-center justify-center select-none rounded-full cursor-pointer hover:shadow-[0_4px_12px_rgba(14,22,41,0.06)]"
                 whileHover="hover"
                 whileTap={{ scale: 0.98 }}
               >
-                {/* Navy sliding hover background */}
+                {/* Navy hover background */}
                 <motion.span
                   className="absolute inset-0 bg-brand-navy"
-                  initial={{ y: "100%" }}
+                  initial={{ opacity: 0 }}
                   variants={{
-                    hover: { y: 0 }
+                    hover: { opacity: 1 }
                   }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.35 }}
+                />
+                {/* Diagonal Gloss Shimmer Sweep */}
+                <motion.span
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FCFAF7]/20 to-transparent pointer-events-none"
+                  style={{ skewX: -20, left: "-100%", width: "40%" }}
+                  variants={{
+                    hover: { left: "150%" }
+                  }}
+                  transition={{ duration: 0.65, ease: "easeInOut" }}
                 />
                 <motion.span
                   className="relative z-10 transition-colors duration-300"

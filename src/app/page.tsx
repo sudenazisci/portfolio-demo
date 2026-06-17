@@ -10,23 +10,26 @@ import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollBackground from "@/components/ScrollBackground";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow">
-        <Hero />
-        <About />
-        <Services />
-        <Portfolio />
-        <InstagramShowcase />
-        <SkillsTools />
-        <Process />
-        <Testimonials />
-        <Pricing />
-        <Contact />
-      </main>
+      <ScrollBackground>
+        <main className="flex-grow">
+          <Hero />
+          <About />
+          <Services />
+          <Portfolio />
+          <InstagramShowcase />
+          <SkillsTools />
+          <Process />
+          <Testimonials />
+          <Pricing />
+          <Contact />
+        </main>
+      </ScrollBackground>
       <Footer />
     </>
   );
