@@ -1,11 +1,38 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Check, MessageSquare, Heart, Play, Grid } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export default function InstagramShowcase() {
+  const [hearts, setHearts] = useState<{
+    id: number;
+    x: number;
+    y: number;
+    scale: number;
+    rotate: number;
+    rotateDelta: number;
+    duration: number;
+    color: string;
+  }[]>([]);
+
+  const handleLikeClick = () => {
+    const colors = ["#D4AF37", "#E8C2C6", "#C5A572", "#E2DFF4", "#F472B6", "#EF4444"];
+    const newHearts = Array.from({ length: 12 }).map((_, i) => ({
+      id: Date.now() + i + Math.random(),
+      x: (Math.random() - 0.5) * 240, // Random X offset between -120 and 120
+      y: -150 - Math.random() * 200, // Random Y offset between -150 and -350
+      scale: 0.8 + Math.random() * 1.0,
+      rotate: (Math.random() - 0.5) * 60,
+      rotateDelta: (Math.random() - 0.5) * 90,
+      duration: 1.0 + Math.random() * 0.8,
+      color: colors[Math.floor(Math.random() * colors.length)],
+    }));
+
+    setHearts((prev) => [...prev, ...newHearts]);
+  };
+
   const mockPosts = [
     { id: 1, src: "/photo_post_1.png", alt: "Sky and clouds photography" },
     { id: 2, src: "/photo_post_2.png", alt: "Green hills landscape photography" },
@@ -211,14 +238,51 @@ export default function InstagramShowcase() {
             </motion.div>
 
             {/* Floating Heart like button on bottom right */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="w-14 h-14 bg-brand-gold rounded-full flex items-center justify-center text-white shadow-xl hover:bg-brand-navy transition-colors duration-300 absolute right-6 md:right-12 bottom-6 z-20"
-              aria-label="Beğen"
-            >
-              <Heart className="w-5 h-5 fill-white" />
-            </motion.button>
+            <div className="absolute right-6 md:right-12 bottom-6 z-20">
+              {/* Floating hearts container */}
+              <div className="absolute inset-0 pointer-events-none overflow-visible">
+                <AnimatePresence>
+                  {hearts.map((heart) => (
+                    <motion.div
+                      key={heart.id}
+                      initial={{ opacity: 1, scale: 0.3, x: 16, y: 16, rotate: heart.rotate }}
+                      animate={{
+                        opacity: 0,
+                        scale: heart.scale,
+                        x: heart.x,
+                        y: heart.y,
+                        rotate: heart.rotate + heart.rotateDelta,
+                      }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: heart.duration, ease: "easeOut" }}
+                      onAnimationComplete={() => {
+                        setHearts((prev) => prev.filter((h) => h.id !== heart.id));
+                      }}
+                      className="absolute pointer-events-none"
+                    >
+                      <Heart
+                        className="w-6 h-6"
+                        style={{
+                          color: heart.color,
+                          fill: heart.color,
+                          filter: `drop-shadow(0 2px 8px ${heart.color}55)`,
+                        }}
+                      />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </div>
+
+              <motion.button
+                onClick={handleLikeClick}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-14 h-14 bg-brand-gold rounded-full flex items-center justify-center text-white shadow-xl hover:bg-brand-navy transition-colors duration-300 cursor-pointer relative z-10"
+                aria-label="Beğen"
+              >
+                <Heart className="w-5 h-5 fill-white" />
+              </motion.button>
+            </div>
           </div>
 
         </div>

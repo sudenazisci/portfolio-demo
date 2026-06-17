@@ -5,13 +5,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import BlurText from "./BlurText";
+import CountUp from "./CountUp";
 
 export default function Hero() {
   const stats = [
-    { value: "+50", label: "Yönetilen Marka" },
-    { value: "+4 Yıl", label: "Deneyim" },
-    { value: "+10M", label: "Aylık Erişim" },
-    { value: "+%300", label: "Ortalama Büyüme" },
+    { prefix: "+", to: 50, suffix: "", label: "Yönetilen Marka" },
+    { prefix: "+", to: 4, suffix: " Yıl", label: "Deneyim" },
+    { prefix: "+", to: 10, suffix: "M", label: "Aylık Erişim" },
+    { prefix: "+%", to: 300, suffix: "", label: "Ortalama Büyüme" },
   ];
 
   return (
@@ -94,19 +95,62 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="mt-10 flex flex-wrap gap-4"
             >
-              <a
+              {/* Button 1: Portföyü İncele (Sliding background from left) */}
+              <motion.a
                 href="#portfoy"
-                className="px-8 py-4 text-xs font-bold uppercase tracking-widest text-[#FCFAF7] bg-brand-navy hover:bg-brand-gold transition-all duration-500 shadow-md hover:shadow-lg flex items-center gap-2 group rounded-none"
+                className="relative px-8 py-4 text-xs font-bold uppercase tracking-widest text-[#FCFAF7] border border-brand-navy overflow-hidden group flex items-center gap-2 select-none rounded-none cursor-pointer"
+                whileHover="hover"
+                whileTap={{ scale: 0.98 }}
               >
-                Portföyü İncele
-                <ArrowRight className="w-4.5 h-4.5 stroke-[2.5] group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a
+                {/* Base color */}
+                <span className="absolute inset-0 bg-brand-navy" />
+                {/* Gold sliding hover background */}
+                <motion.span
+                  className="absolute inset-0 bg-brand-gold"
+                  initial={{ x: "-100%" }}
+                  variants={{
+                    hover: { x: 0 }
+                  }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                />
+                <span className="relative z-10 flex items-center gap-2">
+                  Portföyü İncele
+                  <motion.span
+                    variants={{
+                      hover: { x: 5 }
+                    }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    <ArrowRight className="w-4.5 h-4.5 stroke-[2.5]" />
+                  </motion.span>
+                </span>
+              </motion.a>
+
+              {/* Button 2: Ücretsiz Görüşme Planla (Sliding background from bottom) */}
+              <motion.a
                 href="#iletisim"
-                className="px-8 py-4 text-xs font-bold uppercase tracking-widest text-brand-navy border-2 border-brand-navy hover:border-brand-gold hover:bg-brand-gold hover:text-[#FCFAF7] transition-all duration-500 backdrop-blur-sm rounded-none"
+                className="relative px-8 py-4 text-xs font-bold uppercase tracking-widest text-brand-navy border border-brand-navy overflow-hidden group flex items-center justify-center select-none rounded-none cursor-pointer"
+                whileHover="hover"
+                whileTap={{ scale: 0.98 }}
               >
-                Ücretsiz Görüşme Planla
-              </a>
+                {/* Navy sliding hover background */}
+                <motion.span
+                  className="absolute inset-0 bg-brand-navy"
+                  initial={{ y: "100%" }}
+                  variants={{
+                    hover: { y: 0 }
+                  }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                />
+                <motion.span
+                  className="relative z-10 transition-colors duration-300"
+                  variants={{
+                    hover: { color: "#FCFAF7" }
+                  }}
+                >
+                  Ücretsiz Görüşme Planla
+                </motion.span>
+              </motion.a>
             </motion.div>
 
             {/* Statistics (Premium Editorial Layout) */}
@@ -138,12 +182,14 @@ export default function Hero() {
                     </span>
 
                     {/* Elegant Stat Value */}
-                    <div className="relative flex items-baseline gap-1 mt-1.5">
+                    <div className="relative flex items-baseline gap-0.5 mt-1.5">
                       <span className="font-serif text-3xl md:text-4xl font-black text-brand-gold group-hover:text-brand-gold-muted transition-colors duration-300">
-                        {stat.value}
+                        {stat.prefix}
+                        <CountUp to={stat.to} duration={1.5} delay={0.2 + idx * 0.1} />
+                        {stat.suffix}
                       </span>
                       {/* Floating decorative dot */}
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-50 transition-all duration-300" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-50 transition-all duration-300 ml-1" />
                     </div>
 
                     {/* Stat Label */}
