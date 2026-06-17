@@ -93,12 +93,12 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-10 flex flex-wrap gap-4"
+            className="mt-10 flex flex-wrap gap-4"
             >
               {/* Button 1: Portföyü İncele (Sliding background from left) */}
               <motion.a
                 href="#portfoy"
-                className="relative px-8 py-4 text-xs font-bold uppercase tracking-widest text-[#FCFAF7] border border-brand-navy overflow-hidden group flex items-center gap-2 select-none rounded-none cursor-pointer"
+                className="relative px-9 py-4 text-xs font-bold uppercase tracking-widest text-[#FCFAF7] border border-brand-navy hover:border-brand-gold overflow-hidden group flex items-center gap-2 select-none rounded-full cursor-pointer shadow-[0_4px_14px_rgba(14,22,41,0.08)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.18)] transition-all duration-500"
                 whileHover="hover"
                 whileTap={{ scale: 0.98 }}
               >
@@ -129,7 +129,7 @@ export default function Hero() {
               {/* Button 2: Ücretsiz Görüşme Planla (Sliding background from bottom) */}
               <motion.a
                 href="#iletisim"
-                className="relative px-8 py-4 text-xs font-bold uppercase tracking-widest text-brand-navy border border-brand-navy overflow-hidden group flex items-center justify-center select-none rounded-none cursor-pointer"
+                className="relative px-9 py-4 text-xs font-bold uppercase tracking-widest text-brand-navy border border-brand-navy/35 hover:border-brand-navy overflow-hidden group flex items-center justify-center select-none rounded-full cursor-pointer hover:shadow-[0_4px_14px_rgba(14,22,41,0.04)] transition-all duration-500"
                 whileHover="hover"
                 whileTap={{ scale: 0.98 }}
               >
