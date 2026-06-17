@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight } from "lucide-react";
+import TextType from "./TextType";
 
 export default function About() {
   return (
@@ -141,9 +142,16 @@ export default function About() {
             </h2>
 
             <div className="space-y-6 text-brand-navy/80 font-light leading-relaxed font-sans text-sm md:text-base">
-              <p>
-                Merhaba, ben <strong>Elif Yılmaz</strong>. İstanbul merkezli çalışan bir Sosyal Medya Yöneticisi, İçerik Stratejisti ve Marka Büyüme Uzmanıyım. Markaların dijital ekosistemde sadece var olmalarını değil, hedef kitleleriyle gerçek bağlar kurarak büyümelerini sağlıyorum.
-              </p>
+              <TextType
+                text="Merhaba, ben Elif Yılmaz. İstanbul merkezli çalışan bir Sosyal Medya Yöneticisi, İçerik Stratejisti ve Marka Büyüme Uzmanıyım. Markaların dijital ekosistemde sadece var olmalarını değil, hedef kitleleriyle gerçek bağlar kurarak büyümelerini sağlıyorum."
+                typingSpeed={30}
+                loop={false}
+                showCursor={true}
+                cursorCharacter="|"
+                startOnVisible={true}
+                as="p"
+                className="text-brand-navy/80 font-light leading-relaxed font-sans text-sm md:text-base inline-block"
+              />
               
               <p className="border-l-2 border-brand-gold pl-6 py-1 italic text-brand-navy/95 font-medium font-serif text-lg leading-relaxed">
                 "İşletmelerin stratejik içerik üretimi, sosyal medya yönetimi, hikaye anlatıcılığı ve performans pazarlaması yoluyla büyümesine yardımcı oluyorum. Misyonum, sıradan markaları akılda kalıcı dijital deneyimlere dönüştürmektir."
