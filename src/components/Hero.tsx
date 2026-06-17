@@ -202,26 +202,26 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Portrait Image Container - Kemersel/Kubbemsi Mimari Tasarım (Arch Dome) */}
+          {/* Portrait Image Container - Capsule/Stadium Shape */}
           <div className="lg:col-span-5 relative mt-12 lg:mt-0 flex justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative w-[300px] h-[440px] md:w-[350px] md:h-[490px] flex items-center justify-center"
+              className="relative w-[260px] h-[380px] md:w-[300px] md:h-[440px] flex items-center justify-center p-3 border border-brand-gold/25 rounded-[100px]"
             >
-              {/* Offset Gold Arch Background Shape */}
-              <div className="absolute inset-0 rounded-t-full bg-brand-gold/15 translate-x-3.5 translate-y-3.5 pointer-events-none" />
+              {/* Offset Gold Capsule Background Shape */}
+              <div className="absolute inset-0 rounded-[100px] bg-brand-gold/10 translate-x-3 translate-y-3 pointer-events-none -z-10" />
 
-              {/* Architectural Dome/Arch Frame */}
-              <div className="relative w-full h-full rounded-t-full overflow-hidden border-2 border-brand-gold/30 shadow-2xl bg-brand-cream">
+              {/* Inner Image Frame */}
+              <div className="relative w-full h-full rounded-[88px] overflow-hidden border border-brand-gold/20 shadow-xl bg-brand-cream">
                 <Image
                   src="/elif_portrait.png"
                   alt="Elif Yılmaz - Sosyal Medya Yöneticisi"
                   fill
                   priority
                   className="object-cover transition-transform duration-700 hover:scale-105"
-                  sizes="(max-w-7xl) 100vw, 350px"
+                  sizes="(max-w-7xl) 100vw, 300px"
                 />
               </div>
             </motion.div>
